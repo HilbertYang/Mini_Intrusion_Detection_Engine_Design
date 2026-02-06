@@ -1,0 +1,27 @@
+import sys
+import os
+
+args = sys.argv[1:]
+
+if len(args) != 2:
+    print("USAGE : ")
+    print("python genpayloadBin.py <bytyes seperated by , in hex> outputFilename")
+    print("example : ")
+    print("python genpayloadBin.py 34,8A,15,37,C4 payloadWith_1537.bin ")
+    sys.exit()
+else:
+    user_input = args[0]
+    target_file = args[1]
+
+def convert_hex_to_bin(hex_string, output_filename):
+    clean_hex = hex_string.replace(",", "").replace("\n", "").replace("\r", "")
+    binary_data = clean_hex.decode('hex')
+    f = open(output_filename, 'wb')
+    f.write(binary_data)
+
+    print "Successfully created: " + output_filename
+    print "Bytes written: " + str(len(binary_data))
+
+
+convert_hex_to_bin(user_input, target_file)
+

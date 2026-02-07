@@ -1,0 +1,177 @@
+nf_download bitfiles/nf2_top_par_ids.bit
+[team-1:fpga ~] nf_download bitfiles/nf2_top_par_ids.bit
+Found net device: nf2c0
+Bit file built from: nf2_top_par.ncd;HW_TIMEOUT=FALSE
+Part: 2vp50ff1152
+Date: 2026/ 2/ 6
+Time: 15:53:35
+Error Registers: 0
+Good, after resetting programming interface the FIFO is empty
+Download completed -  2377668 bytes. (expected 2377668).
+DONE went high - chip has been successfully programmed.
+CPCI Information
+----------------
+Version: 4 (rev 1)
+
+Device (Virtex) Information
+---------------------------
+Project directory: lab4
+Project name: Reference router
+Project description: Reference IPv4 router
+
+Device ID: 2
+Version: 1.0.0
+Built against CPCI version: 4 (rev 1)
+
+Virtex design compiled against active CPCI version
+[team-1:fpga ~] rkd &
+[1] 22308
+[team-1:fpga ~] ./idsreg reset
+Found net device: nf2c0
+Found net device: nf2c0
+[team-1:fpga ~] ./idsreg pattern ABCDEFG
+Setting pattern hi=0x7f414243, lo=0x44454647
+Found net device: nf2c0
+Found net device: nf2c0
+[team-1:fpga ~] ./idsreg allregs
+Found net device: nf2c0
+MATCHES:    0x00000001
+Found net device: nf2c0
+PATTERN_HI: 0x7f414243
+Found net device: nf2c0
+PATTERN_LO: 0x44454647
+Found net device: nf2c0
+COMMAND:    0x00000000
+[team-1:fpga ~] ./idsreg matches
+Found net device: nf2c0
+0x00000014
+
+[team-1:fpga ~]
+
+[team-1:n0 ~] iperf -s -p 5007 &
+[1] 4532
+[team-1:n0 ~] ------------------------------------------------------------
+Server listening on TCP port 5007
+TCP window size:  128 KByte (default)
+------------------------------------------------------------
+echo -n "ABCDEFGH" > patternABCDEFG.txt
+[team-1:n0 ~] echo -n "aqrwetwe" > pattern.txt
+[team-1:n0 ~] [  4] local 10.0.4.3 port 5007 connected with 10.0.6.3 port 40821
+iperf -c $n1 -p 5007 -F pattern.txt
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0- 0.0 sec   128 KBytes   180 Mbits/sec
+------------------------------------------------------------
+Client connecting to 10.0.5.3, TCP port 5007
+TCP window size: 16.0 KByte (default)
+------------------------------------------------------------
+[  4] local 10.0.4.3 port 49267 connected with 10.0.5.3 port 5007
+[  5] local 10.0.4.3 port 5007 connected with 10.0.7.3 port 55826
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0- 0.0 sec   128 KBytes   192 Mbits/sec
+iperf -c $n2 -p 5007 -F pattern.txt
+[  5]  0.0- 0.0 sec   128 KBytes  70.7 Mbits/sec
+iperf -c $n3 -p 5007 -F patternABCDEFG.txt
+[team-1:n0 ~] iperf -c $n2 -p 5007 -F pattern.txt
+------------------------------------------------------------
+Client connecting to 10.0.6.3, TCP port 5007
+TCP window size: 16.0 KByte (default)
+------------------------------------------------------------
+[  4] local 10.0.4.3 port 54300 connected with 10.0.6.3 port 5007
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0- 0.0 sec   128 KBytes   177 Mbits/sec
+[team-1:n0 ~] iperf -c $n3 -p 5007 -F patternABCDEFG.txt
+------------------------------------------------------------
+Client connecting to 10.0.7.3, TCP port 5007
+TCP window size: 16.0 KByte (default)
+------------------------------------------------------------
+[  4] local 10.0.4.3 port 39805 connected with 10.0.7.3 port 5007
+
+
+bash-3.2$ iperf -s -p 5007 &
+[1] 12658
+bash-3.2$ ------------------------------------------------------------
+Server listening on TCP port 5007
+TCP window size:  128 KByte (default)
+------------------------------------------------------------
+echo -n "ABCDEFGH" > patternABCDEFG.txt
+bash-3.2$ echo -n "aqrwetwe" > pattern.txt
+bash-3.2$ iperf -c $n0 -p 5007 -F patternABCDEFG.txt
+error: Name or service not known
+bash-3.2$ [  4] local 10.0.5.3 port 5007 connected with 10.0.4.3 port 49267
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0- 0.0 sec   128 KBytes   127 Mbits/sec
+iperf -c $n2 -p 5007 -F pattern.txt
+error: Name or service not known
+bash-3.2$ iperf -c $n3 -p 5007 -F pattern.txt
+error: Name or service not known
+bash-3.2$ [  5] local 10.0.5.3 port 5007 connected with 10.0.7.3 port 43287
+[  5]  0.0- 0.0 sec   128 KBytes   146 Mbits/sec
+[  4] local 10.0.5.3 port 5007 connected with 10.0.6.3 port 50163
+
+
+
+
+[team-1:n2 ~] iperf -s -p 5007 &
+[1] 20632
+[team-1:n2 ~] ------------------------------------------------------------
+Server listening on TCP port 5007
+TCP window size:  128 KByte (default)
+------------------------------------------------------------
+echo -n "ABCDEFGH" > patternABCDEFG.txt
+[team-1:n2 ~] echo -n "aqrwetwe" > pattern.txt
+[team-1:n2 ~] iperf -c $n0 -p 5007 -F pattern.txt
+------------------------------------------------------------
+Client connecting to 10.0.4.3, TCP port 5007
+TCP window size: 16.0 KByte (default)
+------------------------------------------------------------
+[  4] local 10.0.6.3 port 40821 connected with 10.0.4.3 port 5007
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0- 0.0 sec   128 KBytes   135 Mbits/sec
+[team-1:n2 ~] iperf -c $n1 -p 5007 -F patternABCDEFG.txt
+[  4] local 10.0.6.3 port 5007 connected with 10.0.4.3 port 54300
+iperf -c $n3 -p 5007 -F pattern.txt
+------------------------------------------------------------
+Client connecting to 10.0.5.3, TCP port 5007
+TCP window size: 16.0 KByte (default)
+------------------------------------------------------------
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0- 0.0 sec   128 KBytes  85.1 Mbits/sec
+[  4] local 10.0.6.3 port 50163 connected with 10.0.5.3 port 5007
+[  5] local 10.0.6.3 port 5007 connected with 10.0.7.3 port 47579
+
+
+[team-1:n3 ~] iperf -s -p 5007 &
+[1] 20285
+[team-1:n3 ~] ------------------------------------------------------------
+Server listening on TCP port 5007
+TCP window size:  128 KByte (default)
+------------------------------------------------------------
+echo -n "ABCDEFGH" > patternABCDEFG.txt
+[team-1:n3 ~] echo -n "aqrwetwe" > pattern.txt
+[team-1:n3 ~] iperf -c $n0 -p 5007 -F pattern.txt
+------------------------------------------------------------
+Client connecting to 10.0.4.3, TCP port 5007
+TCP window size: 18.3 KByte (default)
+------------------------------------------------------------
+[  4] local 10.0.7.3 port 55826 connected with 10.0.4.3 port 5007
+iperf -c $n1 -p 5007 -F pattern.txt
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0- 0.0 sec   128 KBytes   118 Mbits/sec
+iperf -c $n2 -p 5007 -F patternABCDEFG.txt
+[team-1:n3 ~] iperf -c $n1 -p 5007 -F pattern.txt
+------------------------------------------------------------
+Client connecting to 10.0.5.3, TCP port 5007
+TCP window size: 16.0 KByte (default)
+------------------------------------------------------------
+[  4] local 10.0.7.3 port 43287 connected with 10.0.5.3 port 5007
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0- 0.0 sec   128 KBytes   134 Mbits/sec
+[team-1:n3 ~] iperf -c $n2 -p 5007 -F patternABCDEFG.txt
+------------------------------------------------------------
+Client connecting to 10.0.6.3, TCP port 5007
+TCP window size: 16.0 KByte (default)
+------------------------------------------------------------
+[  4] local 10.0.7.3 port 47579 connected with 10.0.6.3 port 5007
+[  4] local 10.0.7.3 port 5007 connected with 10.0.4.3 port 39805
+
+

@@ -1,0 +1,96 @@
+[team-1:n0 ~] iperf -s -p 5005 &
+[1] 973
+[team-1:n0 ~] ------------------------------------------------------------
+Server listening on TCP port 5005
+TCP window size:  128 KByte (default)
+------------------------------------------------------------
+iperf -c 10.0.4.3 -p 5005 > /dev/null 2>&1
+[  4] local 10.0.4.3 port 5005 connected with 10.0.4.3 port 46382
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0-10.0 sec   694 MBytes   582 Mbits/sec
+[team-1:n0 ~] iperf -c 10.0.5.3 -p 5005 > /dev/null 2>&1
+[team-1:n0 ~] iperf -c 10.0.6.3 -p 5005 > /dev/null 2>&1
+[team-1:n0 ~] iperf -c 10.0.7.3 -p 5005 > /dev/null 2>&1
+[team-1:n0 ~] [  5] local 10.0.4.3 port 5005 connected with 10.0.5.3 port 39842
+[  5]  0.0-10.1 sec   120 MBytes  99.4 Mbits/sec
+[  4] local 10.0.4.3 port 5005 connected with 10.0.6.3 port 34300
+[  4]  0.0-10.3 sec   102 MBytes  83.0 Mbits/sec
+[  5] local 10.0.4.3 port 5005 connected with 10.0.7.3 port 53064
+[  5]  0.0-10.1 sec   107 MBytes  88.5 Mbits/sec
+
+
+
+
+
+bash-3.2$ iperf -s -p 5005 &
+[1] 8255
+bash-3.2$ ------------------------------------------------------------
+Server listening on TCP port 5005
+TCP window size:  128 KByte (default)
+------------------------------------------------------------
+[  4] local 10.0.5.3 port 5005 connected with 10.0.4.3 port 35813
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0-10.2 sec   100 MBytes  82.3 Mbits/sec
+iperf -c 10.0.4.3 -p 5005 > /dev/null 2>&1
+bash-3.2$ iperf -c 10.0.5.3 -p 5005 > /dev/null 2>&1
+[  5] local 10.0.5.3 port 5005 connected with 10.0.5.3 port 56344
+bash-3.2$ [  5]  0.0-10.0 sec  5.00 GBytes  4.28 Gbits/sec
+iperf -c 10.0.6.3 -p 5005 > /dev/null 2>&1
+bash-3.2$ iperf -c 10.0.7.3 -p 5005 > /dev/null 2>&1
+bash-3.2$ [  4] local 10.0.5.3 port 5005 connected with 10.0.6.3 port 56757
+[  4]  0.0-10.2 sec   105 MBytes  85.7 Mbits/sec
+[  5] local 10.0.5.3 port 5005 connected with 10.0.7.3 port 50181
+[  5]  0.0-10.3 sec   113 MBytes  91.6 Mbits/sec
+
+
+
+
+
+[team-1:n2 ~] iperf -s -p 5005 &
+[1] 12173
+[team-1:n2 ~] ------------------------------------------------------------
+Server listening on TCP port 5005
+TCP window size:  128 KByte (default)
+------------------------------------------------------------
+[  4] local 10.0.6.3 port 5005 connected with 10.0.4.3 port 41473
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0-10.1 sec   113 MBytes  93.4 Mbits/sec
+[  5] local 10.0.6.3 port 5005 connected with 10.0.5.3 port 49787
+[  5]  0.0-10.3 sec   115 MBytes  93.7 Mbits/sec
+iperf -c 10.0.4.3 -p 5005 > /dev/null 2>&1
+[team-1:n2 ~] iperf -c 10.0.5.3 -p 5005 > /dev/null 2>&1
+[team-1:n2 ~] iperf -c 10.0.6.3 -p 5005 > /dev/null 2>&1
+[  4] local 10.0.6.3 port 5005 connected with 10.0.6.3 port 54228
+[team-1:n2 ~] [  4]  0.0-10.0 sec   802 MBytes   670 Mbits/sec
+iperf -c 10.0.7.3 -p 5005 > /dev/null 2>&1
+[team-1:n2 ~] [  5] local 10.0.6.3 port 5005 connected with 10.0.7.3 port 57355
+[  5]  0.0-10.3 sec  99.6 MBytes  81.3 Mbits/sec
+
+
+
+
+
+[team-1:n3 ~] iperf -s -p 5005 &
+[1] 9678
+[team-1:n3 ~] ------------------------------------------------------------
+Server listening on TCP port 5005
+TCP window size:  128 KByte (default)
+------------------------------------------------------------
+[  4] local 10.0.7.3 port 5005 connected with 10.0.4.3 port 44377
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0-10.1 sec   110 MBytes  91.6 Mbits/sec
+[  5] local 10.0.7.3 port 5005 connected with 10.0.5.3 port 36724
+[  5]  0.0-10.1 sec   111 MBytes  92.2 Mbits/sec
+[  4] local 10.0.7.3 port 5005 connected with 10.0.6.3 port 32871
+[  4]  0.0-10.3 sec   110 MBytes  89.4 Mbits/sec
+iperf -c 10.0.4.3 -p 5005 > /dev/null 2>&1
+[team-1:n3 ~] iperf -c 10.0.5.3 -p 5005 > /dev/null 2>&1
+[team-1:n3 ~] iperf -c 10.0.6.3 -p 5005 > /dev/null 2>&1
+[team-1:n3 ~] iperf -c 10.0.7.3 -p 5005 > /dev/null 2>&1
+[  5] local 10.0.7.3 port 5005 connected with 10.0.7.3 port 54025
+[  5]  0.0-10.0 sec   656 MBytes   549 Mbits/sec
+[team-1:n3 ~]
+
+
+
+

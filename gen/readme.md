@@ -1,0 +1,1 @@
+This fold are the files need to add into the synth when make the bitfile projects.
